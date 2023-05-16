@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- report qweb view -->
+        <record id="action_report_nc_uom" model="ir.actions.report">
+            <field name="name">Uom</field>
+            <field name="model">nc.uom</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">asset_borrower.nc_uom_report</field>
+            <field name="report_file">asset_borrower.nc_uom_report</field>
+            <field name="print_report_name">object.name</field>
+            <field name="binding_model_id" ref="asset_borrower.model_nc_uom"/>
+            <field name="binding_type">report</field>
+        </record>
+        <!-- document template -->
+        <template id="asset_borrower.nc_uom_report_document" >
+            <t t-call="web.external_layout">
+                <t t-set="doc" t-value="doc.with_context({'lang': lang})"/>
+                <div class="page">
+                    <h2>
+                        Uom: <span t-field="doc.name"/>
+                    </h2>
+                    <div class="row mt32 mb32">
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Unit of measure</strong>
+                            <p class="m-0" t-field="doc.unit_of_measure" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Type</strong>
+                            <p class="m-0" t-field="doc.type" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ratio</strong>
+                            <p class="m-0" t-field="doc.ratio" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Active</strong>
+                            <p class="m-0" t-field="doc.active" />
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+            </t>
+        </template>
+
+        <!-- main template -->
+        <template id="asset_borrower.nc_uom_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-set="lang" t-value="doc.create_uid.lang"/>
+                    <t t-call="asset_borrower.nc_uom_report_document" />
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

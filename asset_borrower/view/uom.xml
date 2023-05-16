@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- tree view -->
+        <record id="view_nc_uom_tree" model="ir.ui.view">
+            <field name="name">nc_uom_tree</field>
+            <field name="model">nc.uom</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Uom">
+                    <field name="name" />
+                    <field name="unit_of_measure" />
+                    <field name="type" />
+                    <field name="ratio" />
+                    <field name="active" />
+                </tree>
+            </field>
+        </record>
+        <!-- pivot view -->
+        <record id="view_nc_uom_pivot" model="ir.ui.view">
+            <field name="name">nc_uom_tree</field>
+            <field name="model">nc.uom</field>
+            <field name="type">pivot</field>
+            <field name="arch" type="xml">
+                <pivot string="Uom">
+                </pivot>
+            </field>
+        </record>
+        <!-- form view -->
+        <record id="view_nc_uom_form" model="ir.ui.view">
+            <field name="name">nc_uom_form</field>
+            <field name="model">nc.uom</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Uom">
+                    <header>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <!--button type="object" name="action_view_detail" class="oe_stat_button" icon="fa-pencil-square-o"-->
+                                <!--field name="detail_count" widget="statinfo" string="Detail(s)"/-->
+                                <!--field name="detail_ids" invisible="1"/-->
+                            <!--/button-->
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" string="Uom Name"/>
+                            <h1><field name="name"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="unit_of_measure" />
+                                <field name="type" />
+                                <field name="ratio" />
+                                <field name="active" />
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                        <notebook>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- search -->
+        <record id="view_nc_uom_search" model="ir.ui.view">
+            <field name="name">nc_uom</field>
+            <field name="model">nc.uom</field>
+            <field name="arch" type="xml">
+                <search string="Uom">
+
+                    <filter string="Name" name="filter_by_name" domain="[('name','=','')]" />
+                    <filter string="Unit of measure" name="filter_by_unit_of_measure" domain="[('unit_of_measure','=','')]" />
+                    <filter string="Type" name="filter_by_type" domain="[('type','=','')]" />
+                    <filter string="Ratio" name="filter_by_ratio" domain="[('ratio','=','')]" />
+                    <filter string="Active" name="filter_by_active" domain="[('active','=','')]" />
+                    <field name="name" select="True"/>
+                    <field name="unit_of_measure" select="True"/>
+                    <field name="type" select="True"/>
+                    <field name="ratio" select="True"/>
+                    <field name="active" select="True"/>
+                    <group string="Group By..">
+                    </group>
+                </search>
+            </field>
+        </record>
+        <!-- kanban , to show image, please add image_small in the model -->
+        <record id="view_nc_uom_kanban" model="ir.ui.view" >
+            <field name="name">nc_uom</field>
+            <field name="model">nc.uom</field>
+            <field name="arch" type="xml">
+                <kanban version="7.0">
+                    <field name="id" />
+                    <field name="name" />
+                    <field name="unit_of_measure" />
+                    <field name="type" />
+                    <field name="ratio" />
+                    <field name="active" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
+                                <div class="oe_kanban_details">
+                                    <h4>
+                                        <a type="open"><field name="name"/></a>
+                                    </h4>
+                                    <ul>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <!-- calendar if a date field exists -->
+        <!-- graph -->
+        <record id="view_nc_uom_graph" model="ir.ui.view">
+            <field name="name">nc_uom</field>
+            <field name="model">nc.uom</field>
+            <field name="arch" type="xml">
+                <graph string="Uom" type="bar">
+                </graph>
+            </field>
+        </record>
+        <!-- action window -->
+        <record id="action_uom" model="ir.actions.act_window">
+            <field name="name">Uom</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">nc.uom</field>
+            <field name="view_mode">tree,form,kanban,pivot</field>
+            <field name="context">{"search_default_fieldname":1}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to add a new Uom
+                </p><p>
+                Click the Create button to add a new Uom
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_uom" name="Uom" parent="asset_borrower_config_menu" action="action_uom" sequence="60"/>
+    </data>
+</odoo>

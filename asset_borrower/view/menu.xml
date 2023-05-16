@@ -1,0 +1,7 @@
+<odoo>
+	<data>
+		<menuitem id="asset_borrower_top_menu" name="peminjaman_asset" sequence="20" web_icon="asset_borrower,static/description/icon.png" />
+		<menuitem id="asset_borrower_sub_menu" name="Operations" sequence="40" parent="asset_borrower_top_menu" />
+		<menuitem id="asset_borrower_config_menu" name="Configurations" sequence="50" parent="asset_borrower_top_menu" />
+	</data>
+</odoo>

@@ -1,0 +1,16 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+access_user_nc_transaction,access_user_nc_transaction,model_nc_transaction,asset_borrower.group_peminjaman_asset_user,1,0,0,0
+access_manager_nc_transaction,access_manager_nc_transaction,model_nc_transaction,asset_borrower.group_peminjaman_asset_manager,1,1,1,1
+access_admin_nc_transaction,access_admin_nc_transaction,model_nc_transaction,base.group_system,1,1,1,1
+access_user_nc_borrower_asset,access_user_nc_borrower_asset,model_nc_borrower_asset,asset_borrower.group_peminjaman_asset_user,1,0,0,0
+access_manager_nc_borrower_asset,access_manager_nc_borrower_asset,model_nc_borrower_asset,asset_borrower.group_peminjaman_asset_manager,1,1,1,1
+access_admin_nc_borrower_asset,access_admin_nc_borrower_asset,model_nc_borrower_asset,base.group_system,1,1,1,1
+access_user_nc_borrowed_asset,access_user_nc_borrowed_asset,model_nc_borrowed_asset,asset_borrower.group_peminjaman_asset_user,1,0,0,0
+access_manager_nc_borrowed_asset,access_manager_nc_borrowed_asset,model_nc_borrowed_asset,asset_borrower.group_peminjaman_asset_manager,1,1,1,1
+access_admin_nc_borrowed_asset,access_admin_nc_borrowed_asset,model_nc_borrowed_asset,base.group_system,1,1,1,1
+access_user_nc_assets,access_user_nc_assets,model_nc_assets,asset_borrower.group_peminjaman_asset_user,1,0,0,0
+access_manager_nc_assets,access_manager_nc_assets,model_nc_assets,asset_borrower.group_peminjaman_asset_manager,1,1,1,1
+access_admin_nc_assets,access_admin_nc_assets,model_nc_assets,base.group_system,1,1,1,1
+access_user_nc_uom,access_user_nc_uom,model_nc_uom,asset_borrower.group_peminjaman_asset_user,1,0,0,0
+access_manager_nc_uom,access_manager_nc_uom,model_nc_uom,asset_borrower.group_peminjaman_asset_manager,1,1,1,1
+access_admin_nc_uom,access_admin_nc_uom,model_nc_uom,base.group_system,1,1,1,1

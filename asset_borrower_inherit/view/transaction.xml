@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- tree view -->
+        <!--record id="view_transaction_tree" model="ir.ui.view">
+            <field name="name">transaction_tree</field>
+            <field name="model">nc.transaction</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="asset_borrower.view_nc_transaction_tree"/>
+            <field name="arch" type="xml">
+            </field>
+        </record-->
+        <!-- form view -->
+        <record id="view_transaction_form" model="ir.ui.view">
+            <field name="name">transaction_form</field>
+            <field name="model">nc.transaction</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="asset_borrower.view_nc_transaction_form"/>
+            <field name="arch" type="xml">
+            </field>
+        </record>
+        <!-- search -->
+        <!--record id="view_transaction_search" model="ir.ui.view">
+            <field name="name">transaction</field>
+            <field name="model">nc.transaction</field>
+            <field name="inherit_id" ref="asset_borrower.view_nc_transaction_search"/>
+            <field name="arch" type="xml">
+            </field>
+        </record-->
+        <!-- action window -->
+        <record id="asset_borrower.action_transaction" model="ir.actions.act_window">
+            <field name="name">Transaction</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">nc.transaction</field>
+            <field name="view_mode">tree,form,kanban,pivot,calendar,graph</field>
+            <field name="context">{"search_default_fieldname":1}</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to add a new Transaction
+                </p><p>
+                Click the Create button to add a new Transaction
+                </p>
+            </field>
+        </record>
+
+        <menuitem active="1" id="asset_borrower.menu_transaction" name="Transaction" parent="asset_borrower.asset_borrower_config_menu" action="asset_borrower.action_transaction" sequence="20"/>
+    </data>
+</odoo>
