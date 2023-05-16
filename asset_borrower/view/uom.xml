@@ -140,6 +140,6 @@
             </field>
         </record>
 
-        <menuitem id="menu_uom" name="Uom" parent="asset_borrower_config_menu" action="action_uom" sequence="60"/>
+        <menuitem id="menu_uom" name="Uom" parent="asset_borrower_config_menu" action="action_uom" sequence="50"/>
     </data>
 </odoo>

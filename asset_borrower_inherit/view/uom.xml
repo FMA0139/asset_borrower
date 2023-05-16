@@ -44,6 +44,6 @@
             </field>
         </record>
 
-        <menuitem active="1" id="asset_borrower.menu_uom" name="Uom" parent="asset_borrower.asset_borrower_config_menu" action="asset_borrower.action_uom" sequence="60"/>
+        <menuitem active="1" id="asset_borrower.menu_uom" name="Uom" parent="asset_borrower.asset_borrower_config_menu" action="asset_borrower.action_uom" sequence="50"/>
     </data>
 </odoo>

@@ -29,9 +29,9 @@ Information
 	"data": [
 		# "view/transaction.xml",
 		# "view/borrower_asset.xml",
-		# "view/borrowed_asset.xml",
 		# "view/assets.xml",
 		# "view/uom.xml",
+		# "view/stage.xml",
 	],
 	"installable": True,
 	"auto_install": False,

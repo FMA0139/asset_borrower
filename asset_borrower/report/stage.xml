@@ -2,28 +2,28 @@
 <odoo>
     <data>
         <!-- report qweb view -->
-        <record id="action_report_nc_borrower_asset" model="ir.actions.report">
-            <field name="name">Borrower asset</field>
-            <field name="model">nc.borrower_asset</field>
+        <record id="action_report_nc_stage" model="ir.actions.report">
+            <field name="name">Stage</field>
+            <field name="model">nc.stage</field>
             <field name="report_type">qweb-pdf</field>
-            <field name="report_name">asset_borrower.nc_borrower_asset_report</field>
-            <field name="report_file">asset_borrower.nc_borrower_asset_report</field>
+            <field name="report_name">asset_borrower.nc_stage_report</field>
+            <field name="report_file">asset_borrower.nc_stage_report</field>
             <field name="print_report_name">object.name</field>
-            <field name="binding_model_id" ref="asset_borrower.model_nc_borrower_asset"/>
+            <field name="binding_model_id" ref="asset_borrower.model_nc_stage"/>
             <field name="binding_type">report</field>
         </record>
         <!-- document template -->
-        <template id="asset_borrower.nc_borrower_asset_report_document" >
+        <template id="asset_borrower.nc_stage_report_document" >
             <t t-call="web.external_layout">
                 <t t-set="doc" t-value="doc.with_context({'lang': lang})"/>
                 <div class="page">
                     <h2>
-                        Borrower asset: <span t-field="doc.name"/>
+                        Stage: <span t-field="doc.name"/>
                     </h2>
                     <div class="row mt32 mb32">
                         <div class="col-auto mw-100 mb-2">
-                            <strong>Description</strong>
-                            <p class="m-0" t-field="doc.description" />
+                            <strong>Descriptiom</strong>
+                            <p class="m-0" t-field="doc.descriptiom" />
                         </div>
                     </div>
                 </div>
@@ -62,11 +62,11 @@
         </template>
 
         <!-- main template -->
-        <template id="asset_borrower.nc_borrower_asset_report">
+        <template id="asset_borrower.nc_stage_report">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="doc">
                     <t t-set="lang" t-value="doc.create_uid.lang"/>
-                    <t t-call="asset_borrower.nc_borrower_asset_report_document" />
+                    <t t-call="asset_borrower.nc_stage_report_document" />
                 </t>
             </t>
         </template>

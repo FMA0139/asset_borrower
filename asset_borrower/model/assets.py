@@ -12,3 +12,4 @@ class assets(models.Model):
     amount = fields.Integer( string="Amount",  help="")
 
 
+    transaction_id = fields.Many2one(comodel_name="nc.transaction",  string="Transaction",  help="")

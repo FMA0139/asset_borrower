@@ -10,12 +10,14 @@
             <field name="arch" type="xml">
                 <tree string="Transaction">
                     <field name="name" />
-                    <field name="description" />
                     <field name="transaction_date" />
                     <field name="borrow_time" />
                     <field name="return_time" />
+                    <field name="purposes" />
+                    <field name="location" />
+                    <field name="description" />
                     <field name="borrower_id" />
-                    <field name="borrowed_id" />
+                    <field name="stage_id" />
                 </tree>
             </field>
         </record>
@@ -27,7 +29,7 @@
             <field name="arch" type="xml">
                 <pivot string="Transaction">
                     <field name="borrower_id" type="row"/>
-                    <field name="borrowed_id" type="row"/>
+                    <field name="stage_id" type="row"/>
                 </pivot>
             </field>
         </record>
@@ -54,14 +56,17 @@
                         </div>
                         <group>
                             <group>
-                                <field name="description" />
                                 <field name="transaction_date" />
                                 <field name="borrow_time" />
                                 <field name="return_time" />
+                                <field name="purposes" />
+                                <field name="location" />
+                                <field name="description" />
                             </group>
                             <group>
                                 <field name="borrower_id" />
-                                <field name="borrowed_id" />
+                                <field name="stage_id" />
+                                <field name="borrowed_ids" widget="many2many_tags"/>
                             </group>
                         </group>
                         <notebook>
@@ -78,20 +83,24 @@
                 <search string="Transaction">
 
                     <filter string="Name" name="filter_by_name" domain="[('name','=','')]" />
-                    <filter string="Description" name="filter_by_description" domain="[('description','=','')]" />
                     <filter string="Transaction date" name="filter_by_transaction_date" domain="[('transaction_date','=','')]" />
                     <filter string="Borrow time" name="filter_by_borrow_time" domain="[('borrow_time','=','')]" />
                     <filter string="Return time" name="filter_by_return_time" domain="[('return_time','=','')]" />
+                    <filter string="Purposes" name="filter_by_purposes" domain="[('purposes','=','')]" />
+                    <filter string="Location" name="filter_by_location" domain="[('location','=','')]" />
+                    <filter string="Description" name="filter_by_description" domain="[('description','=','')]" />
                     <field name="name" select="True"/>
-                    <field name="description" select="True"/>
                     <field name="transaction_date" select="True"/>
                     <field name="borrow_time" select="True"/>
                     <field name="return_time" select="True"/>
+                    <field name="purposes" select="True"/>
+                    <field name="location" select="True"/>
+                    <field name="description" select="True"/>
                     <field name="borrower_id" select="True"/>
-                    <field name="borrowed_id" select="True"/>
+                    <field name="stage_id" select="True"/>
                     <group string="Group By..">
                         <filter string="Borrower" domain="[]" name="group_by_borrower_id" context="{'group_by':'borrower_id'}"/>
-                        <filter string="Borrowed" domain="[]" name="group_by_borrowed_id" context="{'group_by':'borrowed_id'}"/>
+                        <filter string="Stage" domain="[]" name="group_by_stage_id" context="{'group_by':'stage_id'}"/>
                     </group>
                 </search>
             </field>
@@ -104,12 +113,14 @@
                 <kanban version="7.0">
                     <field name="id" />
                     <field name="name" />
-                    <field name="description" />
                     <field name="transaction_date" />
                     <field name="borrow_time" />
                     <field name="return_time" />
+                    <field name="purposes" />
+                    <field name="location" />
+                    <field name="description" />
                     <field name="borrower_id" />
-                    <field name="borrowed_id" />
+                    <field name="stage_id" />
                     <templates>
                         <t t-name="kanban-box">
                             <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
@@ -125,7 +136,7 @@
 
 
                                         <li>
-                                            <span class="text-muted">Borrowed</span> <field name="borrowed_id"></field>
+                                            <span class="text-muted">Stage</span> <field name="stage_id"></field>
                                         </li>
 
                                         <li>

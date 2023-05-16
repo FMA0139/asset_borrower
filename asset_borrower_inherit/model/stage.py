@@ -4,6 +4,6 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError, Warning
 
-class borrowed_asset(models.Model):
-    _name = "nc.borrowed_asset"
-    _inherit = "nc.borrowed_asset"
+class stage(models.Model):
+    _name = "nc.stage"
+    _inherit = "nc.stage"

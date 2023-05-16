@@ -11,6 +11,7 @@
                 <tree string="Assets">
                     <field name="name" />
                     <field name="amount" />
+                    <field name="transaction_id" />
                 </tree>
             </field>
         </record>
@@ -21,6 +22,7 @@
             <field name="type">pivot</field>
             <field name="arch" type="xml">
                 <pivot string="Assets">
+                    <field name="transaction_id" type="row"/>
                 </pivot>
             </field>
         </record>
@@ -50,6 +52,7 @@
                                 <field name="amount" />
                             </group>
                             <group>
+                                <field name="transaction_id" />
                             </group>
                         </group>
                         <notebook>
@@ -69,7 +72,9 @@
                     <filter string="Amount" name="filter_by_amount" domain="[('amount','=','')]" />
                     <field name="name" select="True"/>
                     <field name="amount" select="True"/>
+                    <field name="transaction_id" select="True"/>
                     <group string="Group By..">
+                        <filter string="Transaction" domain="[]" name="group_by_transaction_id" context="{'group_by':'transaction_id'}"/>
                     </group>
                 </search>
             </field>
@@ -83,6 +88,7 @@
                     <field name="id" />
                     <field name="name" />
                     <field name="amount" />
+                    <field name="transaction_id" />
                     <templates>
                         <t t-name="kanban-box">
                             <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
@@ -91,6 +97,11 @@
                                         <a type="open"><field name="name"/></a>
                                     </h4>
                                     <ul>
+
+                                        <li>
+                                            <span class="text-muted">Transaction</span> <field name="transaction_id"></field>
+                                        </li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -106,6 +117,7 @@
             <field name="model">nc.assets</field>
             <field name="arch" type="xml">
                 <graph string="Assets" type="bar">
+                    <field name="transaction_id"/>
                 </graph>
             </field>
         </record>
@@ -114,7 +126,7 @@
             <field name="name">Assets</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">nc.assets</field>
-            <field name="view_mode">tree,form,kanban,pivot</field>
+            <field name="view_mode">tree,form,kanban,pivot,graph</field>
             <field name="context">{"search_default_fieldname":1}</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
@@ -125,6 +137,6 @@
             </field>
         </record>
 
-        <menuitem id="menu_assets" name="Assets" parent="asset_borrower_config_menu" action="action_assets" sequence="50"/>
+        <menuitem id="menu_assets" name="Assets" parent="asset_borrower_config_menu" action="action_assets" sequence="40"/>
     </data>
 </odoo>

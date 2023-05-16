@@ -2,36 +2,36 @@
 <odoo>
     <data>
         <!-- tree view -->
-        <record id="view_nc_borrowed_asset_tree" model="ir.ui.view">
-            <field name="name">nc_borrowed_asset_tree</field>
-            <field name="model">nc.borrowed_asset</field>
+        <record id="view_nc_stage_tree" model="ir.ui.view">
+            <field name="name">nc_stage_tree</field>
+            <field name="model">nc.stage</field>
             <field name="type">tree</field>
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
-                <tree string="Borrowed asset">
+                <tree string="Stage">
                     <field name="name" />
-                    <field name="amount" />
+                    <field name="descriptiom" />
                 </tree>
             </field>
         </record>
         <!-- pivot view -->
-        <record id="view_nc_borrowed_asset_pivot" model="ir.ui.view">
-            <field name="name">nc_borrowed_asset_tree</field>
-            <field name="model">nc.borrowed_asset</field>
+        <record id="view_nc_stage_pivot" model="ir.ui.view">
+            <field name="name">nc_stage_tree</field>
+            <field name="model">nc.stage</field>
             <field name="type">pivot</field>
             <field name="arch" type="xml">
-                <pivot string="Borrowed asset">
+                <pivot string="Stage">
                 </pivot>
             </field>
         </record>
         <!-- form view -->
-        <record id="view_nc_borrowed_asset_form" model="ir.ui.view">
-            <field name="name">nc_borrowed_asset_form</field>
-            <field name="model">nc.borrowed_asset</field>
+        <record id="view_nc_stage_form" model="ir.ui.view">
+            <field name="name">nc_stage_form</field>
+            <field name="model">nc.stage</field>
             <field name="type">form</field>
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
-                <form string="Borrowed asset">
+                <form string="Stage">
                     <header>
                     </header>
                     <sheet>
@@ -42,47 +42,50 @@
                             <!--/button-->
                         </div>
                         <div class="oe_title">
-                            <label for="name" class="oe_edit_only" string="Borrowed asset Name"/>
+                            <label for="name" class="oe_edit_only" string="Stage Name"/>
                             <h1><field name="name"/></h1>
                         </div>
                         <group>
                             <group>
-                                <field name="amount" />
+                                <field name="descriptiom" />
                             </group>
                             <group>
                             </group>
                         </group>
                         <notebook>
+                            <page name="transaction_ids" string="Transactions">
+                                <field name="transaction_ids"/>
+                            </page>
                         </notebook>
                     </sheet>
                 </form>
             </field>
         </record>
         <!-- search -->
-        <record id="view_nc_borrowed_asset_search" model="ir.ui.view">
-            <field name="name">nc_borrowed_asset</field>
-            <field name="model">nc.borrowed_asset</field>
+        <record id="view_nc_stage_search" model="ir.ui.view">
+            <field name="name">nc_stage</field>
+            <field name="model">nc.stage</field>
             <field name="arch" type="xml">
-                <search string="Borrowed asset">
+                <search string="Stage">
 
                     <filter string="Name" name="filter_by_name" domain="[('name','=','')]" />
-                    <filter string="Amount" name="filter_by_amount" domain="[('amount','=','')]" />
+                    <filter string="Descriptiom" name="filter_by_descriptiom" domain="[('descriptiom','=','')]" />
                     <field name="name" select="True"/>
-                    <field name="amount" select="True"/>
+                    <field name="descriptiom" select="True"/>
                     <group string="Group By..">
                     </group>
                 </search>
             </field>
         </record>
         <!-- kanban , to show image, please add image_small in the model -->
-        <record id="view_nc_borrowed_asset_kanban" model="ir.ui.view" >
-            <field name="name">nc_borrowed_asset</field>
-            <field name="model">nc.borrowed_asset</field>
+        <record id="view_nc_stage_kanban" model="ir.ui.view" >
+            <field name="name">nc_stage</field>
+            <field name="model">nc.stage</field>
             <field name="arch" type="xml">
                 <kanban version="7.0">
                     <field name="id" />
                     <field name="name" />
-                    <field name="amount" />
+                    <field name="descriptiom" />
                     <templates>
                         <t t-name="kanban-box">
                             <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
@@ -101,30 +104,30 @@
         </record>
         <!-- calendar if a date field exists -->
         <!-- graph -->
-        <record id="view_nc_borrowed_asset_graph" model="ir.ui.view">
-            <field name="name">nc_borrowed_asset</field>
-            <field name="model">nc.borrowed_asset</field>
+        <record id="view_nc_stage_graph" model="ir.ui.view">
+            <field name="name">nc_stage</field>
+            <field name="model">nc.stage</field>
             <field name="arch" type="xml">
-                <graph string="Borrowed asset" type="bar">
+                <graph string="Stage" type="bar">
                 </graph>
             </field>
         </record>
         <!-- action window -->
-        <record id="action_borrowed_asset" model="ir.actions.act_window">
-            <field name="name">Borrowed asset</field>
+        <record id="action_stage" model="ir.actions.act_window">
+            <field name="name">Stage</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">nc.borrowed_asset</field>
+            <field name="res_model">nc.stage</field>
             <field name="view_mode">tree,form,kanban,pivot</field>
             <field name="context">{"search_default_fieldname":1}</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
-                Click to add a new Borrowed asset
+                Click to add a new Stage
                 </p><p>
-                Click the Create button to add a new Borrowed asset
+                Click the Create button to add a new Stage
                 </p>
             </field>
         </record>
 
-        <menuitem id="menu_borrowed_asset" name="Borrowed asset" parent="asset_borrower_config_menu" action="action_borrowed_asset" sequence="40"/>
+        <menuitem id="menu_stage" name="Stage" parent="asset_borrower_config_menu" action="action_stage" sequence="60"/>
     </data>
 </odoo>
